@@ -17,7 +17,7 @@ void solve(){
     if(sum%2!=0){
         cout << "NO" << "\n";
         return;
-    }
+    } 
     if(odd%2!=0){
         cout << "NO" << "\n";
         return;

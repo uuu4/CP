@@ -6,12 +6,9 @@ void solve(){
     cin >> m >> n;
     
     if (n <= m) {
-        // Puan az olduğu için n tane beraberlik alırız, kalanlar mağlubiyet olur.
         cout << (m - n) << "\n";
     } 
     else {
-        // Puan m'den büyükse, hedef mağlubiyeti 0 yapmaktır.
-        // Ama n ve m'nin farkı tek sayı ise tam puanı tutturmak için 1 maç feda edilir.
         if ((n - m) % 2 == 0) {
             cout << 0 << "\n";
         } else {
