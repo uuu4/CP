@@ -3,3 +3,4 @@ solution
 *.out
 *.o
 a.out
+.vscode
