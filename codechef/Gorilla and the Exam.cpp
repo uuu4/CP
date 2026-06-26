@@ -1,51 +1,43 @@
 #include <bits/stdc++.h>
-using namespace std;
-void solve(){
-    int n,k;
-    cin >> n >> k;
-    vector<int> a(n);
-    for(int i=0;i<n;i++){
-        cin >> a[i];
-    }
-    sort(a.begin(),a.end());
-    int counter=1;
-    vector<int> freq;
-    for(int i=1;i<a.size();i++){
-        if(a[i]==a[i-1]){
-            counter++;
-        }
-        else{
-            freq.push_back(counter);
-            counter=1;
-        }
-    }
-    freq.push_back(counter);
-    
-    sort(freq.begin(),freq.end());
-    int i=0;
-    while(k>0){
-        if(freq[i]!=0){
-            k-=freq[i];
-            freq[i]=0;}
-        else{
-            i++;
-        }
 
+using i64 = long long;
+
+void solve() {
+    int n, k;
+    std::cin >> n >> k;
+    std::vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
     }
-    int count = std::count_if(std::begin(freq), std::end(freq), [](int x) {
-        return x != 0;
-    });
-
-    cout << max(1,count) << "\n";
-    
-
+    std::sort(a.begin(), a.end());
+    std::vector<int> cnt = {1};
+    for (int i = 1; i < n; i++) {
+        if (a[i] == a[i - 1]) {
+            cnt.back()++;
+        } else {
+            cnt.emplace_back(1);
+        }
+    }
+    std::sort(cnt.begin(), cnt.end());
+    int m = cnt.size();
+    for (int i = 0; i < m - 1; i++) {
+        if (cnt[i] > k) {
+            std::cout << m - i << "\n";
+            return;
+        }
+        k -= cnt[i];
+    }
+    std::cout << 1 << "\n";
 }
-int main(){
-    int q;
-    cin >> q;
-    while(q--)solve();
-    
 
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
 
-    return 0;
+    int t = 1;
+    std::cin >> t;
+
+    while (t--) {
+        solve();
+    }
 }
